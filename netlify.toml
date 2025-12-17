@@ -1,0 +1,26 @@
+# Netlify configuration for a plain static (multi-page) site.
+# Publish the repository root.
+
+[build]
+  publish = "."
+
+# Pretty URLs (keep address bar as /games etc. but serve the .html files)
+[[redirects]]
+  from = "/games"
+  to = "/games.html"
+  status = 200
+
+[[redirects]]
+  from = "/leaderboard"
+  to = "/leaderboard.html"
+  status = 200
+
+[[redirects]]
+  from = "/settings"
+  to = "/settings.html"
+  status = 200
+
+[[redirects]]
+  from = "/index"
+  to = "/index.html"
+  status = 200

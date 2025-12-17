@@ -22,20 +22,21 @@ onReady(() => {
   initNav();
   audio.init();
 
-  const path = location.pathname.split('/').pop() || 'index.html';
+  const raw = location.pathname.split('/').filter(Boolean).pop() || 'index.html';
+  const page = raw.toLowerCase();
 
-  // Pages by filename (keeps it simple; no SPA routing needed)
-  if (path === 'index.html' || path === '') {
+  // Pages by filename OR pretty URL (Netlify rewrites keep the URL).
+  if (page === 'index.html' || page === 'index' || page === '') {
     initHomePage();
   }
-  if (path === 'games.html') {
+  if (page === 'games.html' || page === 'games') {
     initTabsFromHash();
     initGamesPage();
   }
-  if (path === 'leaderboard.html') {
+  if (page === 'leaderboard.html' || page === 'leaderboard') {
     initLeaderboardPage();
   }
-  if (path === 'settings.html') {
+  if (page === 'settings.html' || page === 'settings') {
     initSettingsPage();
   }
 

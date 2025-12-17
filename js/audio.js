@@ -122,8 +122,27 @@ class AudioSystem {
   }
 
   #applyMute() {
-    if (!this.#master) return;
-    this.#master.gain.value = this.isMuted() ? 0 : 1;
+    // Also mute Howler (CDN is loaded on pages; even if unused now, this prevents surprises).
+    try {
+      if (globalThis.Howler && typeof globalThis.Howler.mute === 'function') {
+        globalThis.Howler.mute(this.isMuted());
+      }
+    } catch {
+      // ignore
+    }
+
+    if (!this.#master || !this.#ctx) return;
+
+    const t = now(this.#ctx);
+    const target = this.isMuted() ? 0 : 1;
+    try {
+      this.#master.gain.cancelScheduledValues(t);
+      this.#master.gain.setValueAtTime(this.#master.gain.value, t);
+      // Small ramp avoids clicks.
+      this.#master.gain.linearRampToValueAtTime(target, t + 0.03);
+    } catch {
+      this.#master.gain.value = target;
+    }
   }
 
   #stopMusic() {
@@ -168,11 +187,25 @@ class AudioSystem {
   setMuted(muted) {
     this.#settings = { muted: Boolean(muted) };
     writeSettings(this.#settings);
+    this.#ensureAudio();
     this.#applyMute();
 
     if (this.#settings.muted) {
       this.#stopMusic();
+      // Hard stop: suspend AudioContext so nothing can play.
+      try {
+        if (this.#ctx && this.#ctx.state === 'running') this.#ctx.suspend();
+      } catch {
+        // ignore
+      }
       return;
+    }
+
+    // Unmuted: make sure audio context is running.
+    try {
+      if (this.#ctx && this.#ctx.state === 'suspended') this.#ctx.resume();
+    } catch {
+      // ignore
     }
 
     // If user unmutes after unlocking, start music.
