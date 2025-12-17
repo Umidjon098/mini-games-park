@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1020" />
+    <title>Reyting • Mini O'yinlar Bog'i</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+      defer
+    ></script>
+    <script
+      src="https://unpkg.com/lottie-web/build/player/lottie.min.js"
+      defer
+    ></script>
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container nav" role="navigation" aria-label="Asosiy menyu">
+        <a class="brand" href="index.html">
+          <span class="brand-badge" aria-hidden="true">🎡</span>
+          <span>Mini O'yinlar Bog'i</span>
+        </a>
+        <div class="nav-links">
+          <a class="pill" href="index.html" data-nav="home">Bosh sahifa</a>
+          <a class="pill" href="games.html" data-nav="games">O'yinlar</a>
+          <a class="pill" href="leaderboard.html" data-nav="leaderboard"
+            >Reyting</a
+          >
+          <a class="pill" href="settings.html" data-nav="settings"
+            >Sozlamalar</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container grid" style="gap: 14px">
+        <section class="card pop">
+          <div class="card-inner">
+            <div class="row" style="justify-content: space-between">
+              <div>
+                <h1 style="margin: 0">Reyting 🏆</h1>
+                <p class="lead" style="margin: 6px 0 0">
+                  Eng yaxshi 10 ta natija shu qurilmada saqlanadi.
+                </p>
+              </div>
+              <div style="min-width: 220px">
+                <label for="gameFilter">O'yin bo'yicha saralash</label>
+                <select
+                  id="gameFilter"
+                  style="width: 100%"
+                  aria-label="Natijalarni o'yin bo'yicha saralash"
+                >
+                  <option value="all">Hammasi</option>
+                  <option value="puzzle">Boshqotirma</option>
+                  <option value="memory">Xotira</option>
+                  <option value="jump">Sakrash</option>
+                  <option value="maze">Labirint</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-inner">
+            <div id="leaderboardTable" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-inner">
+            <div class="row" style="justify-content: space-between">
+              <div>
+                <h2 style="margin: 0 0 6px">Ball berish qanday ishlaydi</h2>
+                <p class="lead" style="margin: 0">
+                  Katta ball — yaxshi natija. Har o'yin o'zining eng yaxshi
+                  natijalarini saqlaydi.
+                </p>
+              </div>
+              <a class="btn secondary" href="games.html">O'yinlarni o'ynash</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        Maxfiylik: natijalar brauzerdan tashqariga chiqmaydi.
+      </div>
+    </footer>
+  </body>
+</html>

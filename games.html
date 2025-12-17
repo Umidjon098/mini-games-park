@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1020" />
+    <title>O'yinlar • Mini O'yinlar Bog'i</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/games.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+      defer
+    ></script>
+    <script
+      src="https://unpkg.com/lottie-web/build/player/lottie.min.js"
+      defer
+    ></script>
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container nav" role="navigation" aria-label="Asosiy menyu">
+        <a class="brand" href="index.html">
+          <span class="brand-badge" aria-hidden="true">🎡</span>
+          <span>Mini O'yinlar Bog'i</span>
+        </a>
+        <div class="nav-links">
+          <a class="pill" href="index.html" data-nav="home">Bosh sahifa</a>
+          <a class="pill" href="games.html" data-nav="games">O'yinlar</a>
+          <a class="pill" href="leaderboard.html" data-nav="leaderboard"
+            >Reyting</a
+          >
+          <a class="pill" href="settings.html" data-nav="settings"
+            >Sozlamalar</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <section class="card pop">
+          <div class="card-inner">
+            <div class="game-title">
+              <div>
+                <h1 style="margin: 0">O'yinlar</h1>
+                <p class="lead" style="margin: 6px 0 0">
+                  O'yinni tanlang. Ballar avtomatik saqlanadi.
+                </p>
+              </div>
+              <div class="kpi" aria-live="polite">
+                <span>🔊</span><b id="soundState">…</b>
+              </div>
+            </div>
+
+            <div
+              class="tabs"
+              role="tablist"
+              aria-label="O'yin tanlash"
+              style="margin-top: 12px"
+            >
+              <button
+                class="tab"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panelPuzzle"
+                id="tabPuzzle"
+                data-game-tab="puzzle"
+              >
+                🧩 Boshqotirma
+              </button>
+              <button
+                class="tab"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panelMemory"
+                id="tabMemory"
+                data-game-tab="memory"
+              >
+                🧠 Xotira
+              </button>
+              <button
+                class="tab"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panelJump"
+                id="tabJump"
+                data-game-tab="jump"
+              >
+                🏃 Sakrash
+              </button>
+              <button
+                class="tab"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panelMaze"
+                id="tabMaze"
+                data-game-tab="maze"
+              >
+                🧭 Labirint
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <div class="game-shell" style="margin-top: 14px">
+          <section
+            class="card game-area"
+            id="panelPuzzle"
+            role="tabpanel"
+            aria-labelledby="tabPuzzle"
+          >
+            <div class="card-inner" id="puzzleRoot"></div>
+          </section>
+
+          <section
+            class="card game-area"
+            id="panelMemory"
+            role="tabpanel"
+            aria-labelledby="tabMemory"
+            hidden
+          >
+            <div class="card-inner" id="memoryRoot"></div>
+          </section>
+
+          <section
+            class="card game-area"
+            id="panelJump"
+            role="tabpanel"
+            aria-labelledby="tabJump"
+            hidden
+          >
+            <div class="card-inner" id="jumpRoot"></div>
+          </section>
+
+          <section
+            class="card game-area"
+            id="panelMaze"
+            role="tabpanel"
+            aria-labelledby="tabMaze"
+            hidden
+          >
+            <div class="card-inner" id="mazeRoot"></div>
+          </section>
+
+          <aside class="card game-panel">
+            <div class="card-inner">
+              <h2 style="margin: 0 0 8px">Tezkor maslahatlar</h2>
+              <ul
+                style="
+                  margin: 0;
+                  padding-left: 18px;
+                  color: var(--muted);
+                  font-weight: 700;
+                  line-height: 1.5;
+                "
+              >
+                <li>Katta tugmalar — bosish oson.</li>
+                <li>Ovoz ixtiyoriy (Sozlamalar).</li>
+                <li>Har o'yin bo'yicha Top 10 saqlanadi.</li>
+                <li>Reklama yo'q. Tashqi yo'naltirish yo'q.</li>
+              </ul>
+              <div class="row" style="margin-top: 14px">
+                <a class="btn secondary" href="leaderboard.html">Reyting</a>
+                <a class="btn secondary" href="settings.html">Sozlamalar</a>
+              </div>
+              <div class="notice" style="margin-top: 14px">
+                Maslahat: Telefonda Labirint va Sakrashda swipe ishlaydi.
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        Maslahat: Tez o'ynash uchun sahifani bosh ekranga qo'shing.
+      </div>
+    </footer>
+  </body>
+</html>

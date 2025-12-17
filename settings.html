@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1020" />
+    <title>Sozlamalar • Mini O'yinlar Bog'i</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+      defer
+    ></script>
+    <script
+      src="https://unpkg.com/lottie-web/build/player/lottie.min.js"
+      defer
+    ></script>
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container nav" role="navigation" aria-label="Asosiy menyu">
+        <a class="brand" href="index.html">
+          <span class="brand-badge" aria-hidden="true">🎡</span>
+          <span>Mini O'yinlar Bog'i</span>
+        </a>
+        <div class="nav-links">
+          <a class="pill" href="index.html" data-nav="home">Bosh sahifa</a>
+          <a class="pill" href="games.html" data-nav="games">O'yinlar</a>
+          <a class="pill" href="leaderboard.html" data-nav="leaderboard"
+            >Reyting</a
+          >
+          <a class="pill" href="settings.html" data-nav="settings"
+            >Sozlamalar</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container grid" style="gap: 14px">
+        <section class="card pop">
+          <div class="card-inner">
+            <h1 style="margin: 0 0 6px">Sozlamalar ⚙️</h1>
+            <p class="lead" style="margin: 0">
+              Xavfsiz sozlamalar. Ota-onalar ovozni o'chirishi yoki mahalliy
+              ballarni tozalashi mumkin.
+            </p>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-inner">
+            <div class="row" style="justify-content: space-between">
+              <div>
+                <h2 style="margin: 0 0 6px">Ovoz</h2>
+                <p class="lead" style="margin: 0">
+                  Barcha ovozlarni yoqing/o'chiring. Hammasiga taalluqli.
+                </p>
+              </div>
+              <button class="btn" id="toggleMuteBtn" type="button">…</button>
+            </div>
+            <div class="row" style="margin-top: 12px">
+              <span class="badge" id="soundStatus" aria-live="polite">…</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-inner">
+            <div class="row" style="justify-content: space-between">
+              <div>
+                <h2 style="margin: 0 0 6px">Ma'lumotlar</h2>
+                <p class="lead" style="margin: 0">
+                  Ushbu qurilmada saqlangan ballar va reytingni tozalaydi.
+                </p>
+              </div>
+              <button class="btn danger" id="resetBtn" type="button">
+                Ballarni tozalash
+              </button>
+            </div>
+            <p class="lead" id="resetNote" style="margin-top: 10px"></p>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-inner">
+            <h2 style="margin: 0 0 6px">Xavfsizlik</h2>
+            <p class="lead" style="margin: 0">
+              Reklama yo'q • Kirish yo'q • Tashqi yo'naltirish yo'q • Skriptlar
+              faqat ishonchli CDNlardan.
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        Agar ovoz chiqmasa, bir marta bosib (tap) ovozni faollashtiring.
+      </div>
+    </footer>
+  </body>
+</html>
