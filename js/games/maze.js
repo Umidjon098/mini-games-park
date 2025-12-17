@@ -112,6 +112,10 @@ export function initMazeGame(root) {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
+  // Mobile: allow reliable swipe without the browser stealing the gesture for scrolling.
+  // (Pointer events + touch scrolling can cancel pointerup on some devices.)
+  canvas.style.touchAction = 'none';
+
   const cols = 14;
   const rows = 10;
 
@@ -314,14 +318,31 @@ export function initMazeGame(root) {
 
   // Swipe detection
   let swipeStart = null;
-  canvas.addEventListener('pointerdown', (e) => {
+  let activePointerId = null;
+
+  function onPointerDown(e) {
+    // Prevent page scroll on touch devices.
+    e.preventDefault();
+    activePointerId = e.pointerId;
     swipeStart = { x: e.clientX, y: e.clientY };
-  });
-  canvas.addEventListener('pointerup', (e) => {
-    if (!swipeStart) return;
-    const dx = e.clientX - swipeStart.x;
-    const dy = e.clientY - swipeStart.y;
+    try {
+      canvas.setPointerCapture(e.pointerId);
+    } catch {
+      // ignore
+    }
+  }
+
+  function onPointerUp(e) {
+    if (activePointerId !== e.pointerId) return;
+    e.preventDefault();
+
+    const start = swipeStart;
     swipeStart = null;
+    activePointerId = null;
+
+    if (!start) return;
+    const dx = e.clientX - start.x;
+    const dy = e.clientY - start.y;
 
     const ax = Math.abs(dx);
     const ay = Math.abs(dy);
@@ -332,7 +353,17 @@ export function initMazeGame(root) {
     } else {
       tryMove(0, dy > 0 ? 1 : -1);
     }
-  });
+  }
+
+  function onPointerCancel(e) {
+    if (activePointerId !== e.pointerId) return;
+    swipeStart = null;
+    activePointerId = null;
+  }
+
+  canvas.addEventListener('pointerdown', onPointerDown);
+  canvas.addEventListener('pointerup', onPointerUp);
+  canvas.addEventListener('pointercancel', onPointerCancel);
 
   newBtn?.addEventListener('click', newMaze);
   window.addEventListener('keydown', onKey);
