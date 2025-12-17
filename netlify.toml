@@ -11,12 +11,27 @@
   status = 200
 
 [[redirects]]
+  from = "/games/*"
+  to = "/games.html"
+  status = 200
+
+[[redirects]]
   from = "/leaderboard"
   to = "/leaderboard.html"
   status = 200
 
 [[redirects]]
+  from = "/leaderboard/*"
+  to = "/leaderboard.html"
+  status = 200
+
+[[redirects]]
   from = "/settings"
+  to = "/settings.html"
+  status = 200
+
+[[redirects]]
+  from = "/settings/*"
   to = "/settings.html"
   status = 200
 
