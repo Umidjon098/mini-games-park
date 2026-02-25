@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uz">
   <head>
     <meta charset="utf-8" />
@@ -100,6 +100,26 @@
               >
                 🧭 Labirint
               </button>
+              <button
+                class="tab"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panelAlphabet"
+                id="tabAlphabet"
+                data-game-tab="alphabet"
+              >
+                🔤 Alifbo
+              </button>
+              <button
+                class="tab"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panelCounting"
+                id="tabCounting"
+                data-game-tab="counting"
+              >
+                🔢 Hisoblash
+              </button>
             </div>
           </div>
         </section>
@@ -144,6 +164,26 @@
             <div class="card-inner" id="mazeRoot"></div>
           </section>
 
+          <section
+            class="card game-area"
+            id="panelAlphabet"
+            role="tabpanel"
+            aria-labelledby="tabAlphabet"
+            hidden
+          >
+            <div class="card-inner" id="alphabetRoot"></div>
+          </section>
+
+          <section
+            class="card game-area"
+            id="panelCounting"
+            role="tabpanel"
+            aria-labelledby="tabCounting"
+            hidden
+          >
+            <div class="card-inner" id="countingRoot"></div>
+          </section>
+
           <aside class="card game-panel">
             <div class="card-inner">
               <h2 style="margin: 0 0 8px">Tezkor maslahatlar</h2>
@@ -160,6 +200,8 @@
                 <li>Ovoz ixtiyoriy (Sozlamalar).</li>
                 <li>Har o'yin bo'yicha Top 10 saqlanadi.</li>
                 <li>Reklama yo'q. Tashqi yo'naltirish yo'q.</li>
+                <li>🔤 Alifbo — ingliz harflarini o'rganish (3-6 yosh).</li>
+                <li>🔢 Hisoblash — 1-10 sonlarni hisoblash (3-6 yosh).</li>
               </ul>
               <div class="row" style="margin-top: 14px">
                 <a class="btn secondary" href="leaderboard.html">Reyting</a>

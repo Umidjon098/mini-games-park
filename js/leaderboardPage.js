@@ -2,7 +2,7 @@ import { getTop } from './score.js';
 import { formatDate } from './ui.js';
 
 function gameLabel(game) {
-  return ({ puzzle: "Boshqotirma", memory: 'Xotira', jump: 'Sakrash', maze: 'Labirint' }[game] || game);
+  return ({ puzzle: "Boshqotirma", memory: 'Xotira', jump: 'Sakrash', maze: 'Labirint', alphabet: 'Alifbo', counting: 'Hisoblash' }[game] || game);
 }
 
 function renderTable(rows) {

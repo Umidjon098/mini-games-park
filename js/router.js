@@ -29,6 +29,8 @@ export function setupTabs({ onTabChanged }) {
     ['memory', document.getElementById('panelMemory')],
     ['jump', document.getElementById('panelJump')],
     ['maze', document.getElementById('panelMaze')],
+    ['alphabet', document.getElementById('panelAlphabet')],
+    ['counting', document.getElementById('panelCounting')],
   ]);
 
   function select(gameKey) {

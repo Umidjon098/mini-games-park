@@ -5,7 +5,7 @@
 
 const KEY = 'mgp_scores_v1';
 
-export const GAMES = /** @type {const} */ (['puzzle', 'memory', 'jump', 'maze']);
+export const GAMES = /** @type {const} */ (['puzzle', 'memory', 'jump', 'maze', 'alphabet', 'counting']);
 
 function nowIso() {
   return new Date().toISOString();
@@ -22,7 +22,7 @@ function safeParse(raw) {
 function loadAll() {
   const raw = localStorage.getItem(KEY);
   const parsed = raw ? safeParse(raw) : null;
-  const base = { puzzle: [], memory: [], jump: [], maze: [] };
+  const base = { puzzle: [], memory: [], jump: [], maze: [], alphabet: [], counting: [] };
   if (!parsed || typeof parsed !== 'object') return base;
   for (const g of GAMES) {
     if (Array.isArray(parsed[g])) base[g] = parsed[g];
