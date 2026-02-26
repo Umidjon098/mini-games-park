@@ -160,47 +160,101 @@ canvas {
   gap: 10px;
 }
 
-/* ── Alphabet game ───────────────────────────── */
-.abc-card {
-  text-align: center;
-  padding: 24px 16px 16px;
+/* ── Shared quiz components (Lug'at + Matematika) ─────────────────── */
+
+/* Countdown bar */
+.quiz-timer-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.quiz-timer-bar {
+  flex: 1;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.quiz-timer-fill {
+  height: 100%;
+  width: 100%;
+  background: #6df2c2;
+  border-radius: 999px;
+  transition: background 300ms;
+}
+.quiz-timer-num {
+  font-size: 0.85rem;
+  font-weight: 900;
+  min-width: 46px;
+  text-align: right;
+  color: var(--muted);
+}
+
+/* Play / Pause / End controls */
+.quiz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Question card */
+.quiz-card {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 22px;
+  padding: 20px 20px 18px;
 }
-.abc-emoji {
-  font-size: clamp(4rem, 16vw, 7rem);
-  line-height: 1.1;
-}
-.abc-word {
-  margin-top: 8px;
-  font-size: 1.5rem;
+.quiz-type-badge {
+  display: inline-block;
+  font-size: 0.72rem;
   font-weight: 900;
-  letter-spacing: 0.04em;
-  color: var(--accent, #7bb7ff);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(123, 183, 255, 0.8);
+  margin-bottom: 10px;
 }
+.quiz-main-text {
+  font-size: clamp(1.05rem, 2.8vw, 1.4rem);
+  font-weight: 800;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+.quiz-explain {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 10px 14px;
+}
+
+/* ── Lug'at answer buttons ─────────────────────────────────────────── */
 .abc-choices {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
 }
 .abc-choice-btn {
-  width: 72px;
-  height: 72px;
-  border-radius: 18px;
-  font-size: 2rem;
-  font-weight: 900;
+  border-radius: 14px;
+  font-size: 0.97rem;
+  font-weight: 800;
   background: rgba(255, 255, 255, 0.07);
   border: 2px solid rgba(255, 255, 255, 0.14);
   cursor: pointer;
   transition:
     transform 120ms,
     background 120ms;
+  padding: 12px 16px;
+  text-align: left;
+  min-height: 52px;
+}
+.abc-choice-btn.wide {
+  width: 100%;
 }
 .abc-choice-btn:not(:disabled):hover {
   background: rgba(123, 183, 255, 0.18);
-  transform: scale(1.08);
+  transform: translateX(4px);
 }
 .abc-choice-btn.abc-correct {
   background: rgba(109, 242, 194, 0.22);
@@ -211,56 +265,38 @@ canvas {
   border-color: rgba(255, 100, 100, 0.5);
 }
 
-/* ── Counting game ───────────────────────────── */
-.cnt-stage {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 22px;
-  padding: 20px 16px 12px;
-  text-align: center;
-  min-height: 160px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
+/* ── Matematika specific ────────────────────────────────────────────── */
+.cnt-math-card {
+  min-height: 130px;
 }
-.cnt-emoji-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  justify-content: center;
-  max-width: 380px;
-}
-.cnt-emoji-item {
-  font-size: clamp(1.8rem, 7vw, 3rem);
-  line-height: 1.1;
-  display: inline-block;
-}
-.cnt-question {
-  font-size: 1.4rem;
+.cnt-math-expr {
+  font-size: clamp(1.25rem, 3.5vw, 1.85rem);
   font-weight: 900;
-  color: var(--accent, #7bb7ff);
+  font-family: "Courier New", monospace;
+  white-space: pre-line;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
 }
 .cnt-choices {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
-  justify-content: center;
 }
 .cnt-choice-btn {
-  width: 72px;
-  height: 72px;
-  border-radius: 18px;
-  font-size: 1.8rem;
+  border-radius: 16px;
+  font-size: 1.15rem;
   font-weight: 900;
   background: rgba(255, 255, 255, 0.07);
   border: 2px solid rgba(255, 255, 255, 0.14);
   cursor: pointer;
+  padding: 16px 10px;
+  min-height: 66px;
   transition:
     transform 120ms,
     background 120ms;
+  font-family: "Courier New", monospace;
 }
 .cnt-choice-btn:not(:disabled):hover {
   background: rgba(123, 183, 255, 0.18);
-  transform: scale(1.08);
+  transform: scale(1.04);
 }
